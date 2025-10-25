@@ -1,0 +1,251 @@
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steak Kitchen | Banquetes & Eventos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animaciones.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" href="assets/img/iconos/logo.jpg">
+  </head>
+
+  <body>
+    <!-- Loader -->
+    <div id="loader">
+      <img src="assets/img/iconos/logo.jpg" alt="Steak Kitchen Logo" class="loader-logo">
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+    <div class="logo">
+      <img src="assets/img/iconos/logo.png" alt="Steak Kitchen">
+      <h1>Steak Kitchen</h1>
+    </div>
+
+    <!-- Icono hamburguesa -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav>
+    <ul id="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="/frontend/eventos.html">Eventos</a></li>
+      <li><a href="/frontend/contacto.html">Contacto</a></li>
+      <li><a href="#" id="btn-login">Admin</a></li> <!-- 👈 Nuevo botón -->
+    </ul>
+    </nav>
+
+  </header>
+
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+      <div class="hero-texto">
+        <h4 class="hero-sub">Est. 2001</h4>
+        <h1 class="hero-titulo">Steak Kitchen</h1>
+        <h3 class="hero-frase">Catering de Espadas Brasileñas</h3>
+        <p class="hero-desc">Experiencias inolvidables</p>
+        <a href="#contacto" class="btn-principal">Contáctanos</a>
+      </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="nosotros">
+      <div class="nosotros-contenedor">
+        <div class="nosotros-texto">
+          <h2>Nuestra Historia</h2>
+          <p class="frase">
+            <em>Buena comida de buenas fuentes forman nuestra receta familiar.</em>
+          </p>
+          <p>
+            ¡Bienvenido a <strong>Banquetes y Catering de Espadas Brasileñas</strong>!  
+            Somos una empresa con más de <strong>15 años de experiencia</strong> llevando el auténtico sabor de las espadas brasileñas a tus eventos.
+          </p>
+          <p>
+            Permita que su paladar disfrute de sabores frescos, ricos y creativos con nuestros diferentes cortes de carne Premium, preparados al momento por nuestro equipo de chefs expertos.
+          </p>
+          <p>
+            En <strong>Steak Kitchen</strong>, trabajamos estrechamente contigo para atender tus necesidades y garantizar que tu evento sea un éxito.  
+            <strong>2 HORAS DE SERVICIO ILIMITADO</strong> para que tú y tus invitados vivan una experiencia inolvidable.
+          </p>
+          <a href="#contacto" class="btn-principal">Haz una reservación</a>
+          <p class="telefono">O llámanos directamente: <strong>+52 442 381 3649</strong></p>
+        </div>
+
+        <div class="nosotros-imagen">
+          <img src="assets/img/eventos/evento8.jpg" alt="Equipo de Steak Kitchen">
+        </div>
+      </div>
+    </section>
+ <!--
+<section id="servicios" class="servicios">
+  <h2 class="titulo-seccion">Nuestro Menú</h2>
+  <p class="intro-servicios">
+    <strong>2 HORAS DE SERVICIO ILIMITADO</strong><br>
+    Descubre la experiencia gastronómica que ofrecemos con cortes premium, guarniciones y más.
+  </p>
+
+ Botón visible solo si hay sesión admin 
+  <button id="btn-agregar-platillo" class="btn-admin oculto">➕ Agregar platillo</button>
+
+  Aquí se insertarán los platillos desde el backend 
+  <div id="lista-platillos" class="servicios-grid"></div>
+</section>
+-->
+
+
+
+    <section id="servicios" class="servicios">
+      <h2 class="titulo-seccion">Nuestros Servicios</h2>
+      <p class="intro-servicios">
+        <strong>2 HORAS DE SERVICIO ILIMITADO</strong><br>
+        Nos enorgullecemos de ofrecer una experiencia gastronómica única, con cortes Premium y guarniciones diseñadas para impresionar a tus invitados.
+      </p>
+
+      <div class="servicios-grid">
+
+        <!-- Servicio 1 -->
+        <div class="servicio-card">
+          <div class="servicio-imagen">
+            <img src="assets/img/rodizio1.jpg" alt="Rodizio de espadas brasileñas">
+          </div>
+          <h3>RODIZIO DE ESPADAS BRASILEÑAS</h3>
+          <ul>
+            <li>Picaña</li>
+            <li>Arrachera</li>
+            <li>Chorizo Argentino</li>
+            <li>Chorizo Brasileño</li>
+            <li>Chistorra</li>
+            <li>Filete a la Mostaza</li>
+            <li>Filete Mignón</li>
+            <li>Filete de Ajo</li>
+            <li>Filete al BBQ</li>
+            <li>Filete al Mango Habanero</li>
+            <li>Cebolla Asada</li>
+            <li>Filete al Parmesano</li>
+            <li>Chiles Rellenos</li>
+            <li>Pan al Ajo</li>
+            <li>Piña Asada</li>
+            <li>Papa Asada</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div class="servicio-card">
+          <div class="servicio-imagen">
+            <img src="assets/img/barra1.jpg" alt="Barra fría y caliente tipo buffet">
+          </div>
+          <h3>BARRA FRÍA Y CALIENTE TIPO BUFFET</h3>
+          <ul>
+            <li>Ensalada Mixta</li>
+            <li>Ensalada Dulce</li>
+            <li>Espagueti Poblano</li>
+            <li>Espagueti Alfredo</li>
+            <li>Sopa de Codito</li>
+            <li>Arroz Frito</li>
+            <li>Nopalitos</li>
+            <li>Chiles Toreados</li>
+            <li>Salsa Verde y Roja</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div class="servicio-card">
+          <div class="servicio-imagen">
+            <img src="assets/img/plaque1.jpg" alt="Servicio de plaque">
+          </div>
+          <h3>SERVICIO DE PLAQUE</h3>
+          <ul>
+            <li>Tabla de Corte</li>
+            <li>Loza</li>
+            <li>Cubiertos</li>
+            <li>Vasos de Cristal</li>
+          </ul>
+        </div>
+
+        <!-- Servicio 4 -->
+        <div class="servicio-card">
+          <div class="servicio-imagen">
+            <img src="assets/img/entradas1.jpg" alt="Entradas y canapés">
+          </div>
+          <h3>ENTRADAS</h3>
+          <ul>
+            <li>Sopa de Tortilla</li>
+            <li>Frijoles Charros</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+    
+
+    <!-- Galería -->
+      <section id="galeria" class="galeria">
+        <h2>Galería de Eventos</h2>
+        <p class="galeria-subtitulo">La mejor experiencia con el mejor servicio.</p>
+            
+        <div class="galeria-slideshow">
+          <img src="assets/img/eventos/evento1.jpg" alt="Evento 1" class="active">
+          <img src="assets/img/eventos/evento2.jpg" alt="Evento 2">
+          <img src="assets/img/eventos/evento3.jpg" alt="Evento 3">
+          <img src="assets/img/eventos/evento4.jpg" alt="Evento 4">
+          <img src="assets/img/eventos/evento5.jpg" alt="Evento 5">
+          <img src="assets/img/eventos/evento6.jpg" alt="Evento 6">
+        </div>
+      </section>
+
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto">
+      <h2>Contáctanos</h2>
+      <form id="contact-form">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu correo" required>
+        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/5215555555555" class="whatsapp-float" target="_blank">
+      <img src="assets/img/iconos/whatsapp.png" alt="WhatsApp">
+    </a>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-contenido">
+        <p>&copy; 2025 Steak Kitchen | Todos los derechos reservados</p>
+        <div class="redes">
+          <a href="#"><img src="assets/img/iconos/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="assets/img/iconos/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="assets/img/iconos/tiktok.png" alt="TikTok"></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/animaciones.js"></script>
+        <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Iniciar Sesión</h2>
+      <form id="login-form">
+        <input type="email" id="email" name="email" placeholder="Correo" required>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="login-error" style="color:red; display:none;">Credenciales incorrectas</p>
+    </div>
+  </div>
+
+  <!-- Scripts al final del body -->
+  <script src="js/main.js"></script>
+
+  </body>
+  </html>
