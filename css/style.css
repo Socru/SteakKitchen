@@ -255,7 +255,7 @@ main, section, .hero, .nosotros, .servicios, .galeria, .contacto {
 }
 
 .nosotros-imagen {
-  flex: 1 1 400px;
+  flex: 1 1 7rem;
   text-align: center;
 }
 
