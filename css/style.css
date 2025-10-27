@@ -115,7 +115,7 @@ main, section, .hero, .nosotros, .servicios, .galeria, .contacto {
 .hero {
   height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('/frontend/assets/img/iconos/fondo.jpeg') center/cover no-repeat;
+              url('/assets/img/iconos/fondo.jpeg') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -515,47 +515,87 @@ main, section, .hero, .nosotros, .servicios, .galeria, .contacto {
   justify-content: center;
   align-items: center;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
   z-index: 1000;
+  text-decoration: none;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
+  background-color: #20b858;
 }
 
-.whatsapp-float img {
-  width: 35px;
-  height: 35px;
+.whatsapp-float i {
+  font-size: 30px;
+  color: white;
 }
+
 
 /* ========== FOOTER ========== */
 footer {
   background-color: #111;
   color: #fff;
-  padding: 30px 10%;
+  padding: 40px 10%;
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 .footer-contenido {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-info,
+.footer-contacto,
+.footer-horario,
+.footer-redes {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+.footer h3 {
+  color: #f5b041;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #f5b041;
 }
 
 .redes {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.8rem;
 }
 
-.redes img {
-  width: 30px;
-  transition: transform 0.3s;
+.redes a {
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.redes img:hover {
+.redes a:hover {
   transform: scale(1.2);
+  color: #f5b041;
 }
+
+.footer-copy {
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+
 
 /* ========== ANIMACIONES ========== */
 @keyframes fadeIn {
