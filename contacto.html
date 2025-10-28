@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Steak Kitchen | Contacto</title>
-  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="../css/animaciones.css">
   <link rel="stylesheet" href="../css/responsive.css">
   <link rel="icon" href="../assets/img/iconos/logo.png">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-  
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">
@@ -19,11 +23,8 @@
       <h1>Steak Kitchen</h1>
     </div>
 
-    <!-- Icono hamburguesa -->
     <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
 
     <nav>
@@ -32,7 +33,7 @@
         <li><a href="index.html#nosotros">Nosotros</a></li>
         <li><a href="index.html#servicios">Servicios</a></li>
         <li><a href="#eventos">Eventos</a></li>
-        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="active">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -40,40 +41,85 @@
   <!-- Contacto -->
   <section id="contacto" class="contacto">
     <h2>Contáctanos</h2>
-    <p>Estamos listos para ayudarte a organizar tu evento perfecto. Llena el formulario o contáctanos directamente.</p>
+    <p>Estamos listos para ayudarte a organizar tu evento perfecto. Envíanos un mensaje por WhatsApp o llena el formulario.</p>
     
-    <form id="contact-form">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
+    <div class="contacto-container">
+      <!-- Formulario -->
+      <form id="contact-form">
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" id="email" name="email" placeholder="Tu correo" required>
+        <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" required></textarea>
+        <button type="submit"><i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp</button>
+      </form>
 
-    <div class="info-contacto">
-      <p>Teléfono: <strong>+52 442 381 3649</strong></p>
-      <p>Correo: <strong>contacto@steakkitchen.com</strong></p>
-      <p>Dirección: <strong>Calle Ejemplo 123, Querétaro, México</strong></p>
+      <!-- Mapa -->
+      <div class="contacto-mapa">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.064902064994!2d-100.4351234!3d20.593028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d35a0e96e967ad%3A0x9f09dbb5fbd2ef4!2sQuer%C3%A9taro%2C%20Qro.!5e0!3m2!1ses-419!2smx!4v1699988888888"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
     </div>
   </section>
 
   <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/5215555555555" class="whatsapp-float" target="_blank">
-    <img src="../assets/img/iconos/whatsapp.png" alt="WhatsApp">
+  <a href="https://wa.me/524423813649" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-contenido">
-      <p>&copy; 2025 Steak Kitchen | Todos los derechos reservados</p>
-      <div class="redes">
-        <a href="#"><img src="../assets/img/iconos/facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="../assets/img/iconos/instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="../assets/img/iconos/tiktok.png" alt="TikTok"></a>
+        <footer class="footer">
+      <div class="footer-contenido">
+        <div class="footer-info">
+          <h3>📍 VISÍTANOS 🥩</h3>
+          <p>Calle Paseos Querétaro No. 2182</p>
+          <p>Col. Paseos de San Miguel, Querétaro</p>
+        </div>
+      
+        <div class="footer-contacto">
+          <h3>📞 CONTACTO</h3>
+          <p>📧 <a href="mailto:contacto@steakkitchen.com.mx">contacto@steakkitchen.com.mx</a></p>
+          <p>📱 <a href="tel:+524423813649">+52 442 381 3649</a></p>
+          <p>📅 Reservaciones: <a href="tel:+524423104112">+52 442 310 4112</a></p>
+        </div>
+      
+        <div class="footer-horario">
+          <h3>🕒 HORARIO</h3>
+          <p>Martes a Domingo</p>
+          <p>2:00 PM – 10:00 PM</p>
+        </div>
+      
+        <div class="footer-redes">
+          <h3>🌐 SÍGUENOS</h3>
+         <div class="redes">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    
+      <div class="footer-copy">
+        <p>© 2025 Steak Kitchen. Todos los derechos reservados.</p>
+      </div>
+    </footer>
 
-  <script src="/frontend/js/main.js"></script>
+  <script src="../js/main.js"></script>
   <script src="../js/animaciones.js"></script>
+
+  <!-- Script para enviar formulario a WhatsApp -->
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      const email = document.getElementById("email").value;
+      const mensaje = document.getElementById("mensaje").value;
+
+      const numero = "5217541123577"; // número WhatsApp del restaurante
+      const texto = `Hola, soy ${nombre}. Mi correo es ${email}.%0A%0A${mensaje}`;
+      const url = `https://wa.me/${numero}?text=${texto}`;
+      window.open(url, "_blank");
+    });
+  </script>
 </body>
 </html>
