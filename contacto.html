@@ -108,34 +108,66 @@
   <script src="../js/animaciones.js"></script>
 
   <!-- Script para enviar formulario a WhatsApp -->
- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form");
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  const btn = form.querySelector('button[type="submit"]');
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+  if (!form) {
+    console.error("No se encontró el formulario #contact-form");
+    return;
+  }
 
-      const nombre = document.getElementById("nombre").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const mensaje = document.getElementById("mensaje").value.trim();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      if (!nombre || !email || !mensaje) {
-        alert("Por favor, completa todos los campos antes de enviar.");
-        return;
+    // Leer valores
+    const nombre = (document.getElementById("nombre")?.value || "").trim();
+    const email  = (document.getElementById("email")?.value || "").trim();
+    const mensaje = (document.getElementById("mensaje")?.value || "").trim();
+
+    console.log("DEBUG contacto ->", { nombre, email, mensaje });
+
+    // Validación simple
+    if (!nombre || !email || !mensaje) {
+      alert("Por favor, completa todos los campos antes de enviar.");
+      return;
+    }
+
+    // Número de WhatsApp (usa formato internacional sin "+" ni espacios)
+    // Ejemplo para México: "52" + "4423813649" => "524423813649"
+    // Si usas un número móvil que requiere el "1" (celulares), inclúyelo: "521XXXXXXXXXX"
+    const numeroWhats = "5217541123577"; // <- ajusta aquí si es necesario
+
+    // Construir texto (codificado)
+    const texto = `Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`;
+    const textoCodificado = encodeURIComponent(texto);
+
+    // Construir URL (usar api.whatsapp.com funciona bien también)
+    const url = `https://wa.me/${numeroWhats}?text=${textoCodificado}`;
+    console.log("DEBUG URL WhatsApp:", url);
+
+    // UX: cambiar texto del botón momentáneamente
+    const originalBtnText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviando...';
+
+    // Intentar abrir en nueva pestaña. Si el navegador bloquea popup, redirigimos en la misma pestaña.
+    const newWindow = window.open(url, "_blank");
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = originalBtnText;
+      // Si la ventana no se abrió (pop-up bloqueado), redirigimos en la misma pestaña
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        const confirmRedirect = confirm("No se pudo abrir WhatsApp en una nueva pestaña. ¿Quieres abrirlo en esta ventana?");
+        if (confirmRedirect) {
+          window.location.href = url;
+        }
       }
-
-      // Número de WhatsApp del restaurante (con 521 para México)
-      const numero = "5217541123577";
-
-      // Codificamos el texto para que se envíe bien con espacios y saltos de línea
-      const texto = encodeURIComponent(
-        `Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`
-      );
-
-      const url = `https://wa.me/${numero}?text=${texto}`;
-      window.open(url, "_blank");
-    });
+    }, 800);
   });
+});
 </script>
+
 </body>
 </html>
