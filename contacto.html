@@ -68,108 +68,87 @@
   </a>
 
   <!-- Footer -->
-        <footer class="footer">
-      <div class="footer-contenido">
-        <div class="footer-info">
-          <h3>📍 VISÍTANOS 🥩</h3>
-          <p>Calle Paseos Querétaro No. 2182</p>
-          <p>Col. Paseos de San Miguel, Querétaro</p>
-        </div>
-      
-        <div class="footer-contacto">
-          <h3>📞 CONTACTO</h3>
-          <p>📧 <a href="mailto:contacto@steakkitchen.com.mx">contacto@steakkitchen.com.mx</a></p>
-          <p>📱 <a href="tel:+524423813649">+52 442 381 3649</a></p>
-          <p>📅 Reservaciones: <a href="tel:+524423104112">+52 442 310 4112</a></p>
-        </div>
-      
-        <div class="footer-horario">
-          <h3>🕒 HORARIO</h3>
-          <p>Martes a Domingo</p>
-          <p>2:00 PM – 10:00 PM</p>
-        </div>
-      
-        <div class="footer-redes">
-          <h3>🌐 SÍGUENOS</h3>
-         <div class="redes">
+  <footer class="footer">
+    <div class="footer-contenido">
+      <div class="footer-info">
+        <h3>📍 VISÍTANOS 🥩</h3>
+        <p>Calle Paseos Querétaro No. 2182</p>
+        <p>Col. Paseos de San Miguel, Querétaro</p>
+      </div>
+    
+      <div class="footer-contacto">
+        <h3>📞 CONTACTO</h3>
+        <p>📧 <a href="mailto:contacto@steakkitchen.com.mx">contacto@steakkitchen.com.mx</a></p>
+        <p>📱 <a href="tel:+524423813649">+52 442 381 3649</a></p>
+        <p>📅 Reservaciones: <a href="tel:+524423104112">+52 442 310 4112</a></p>
+      </div>
+    
+      <div class="footer-horario">
+        <h3>🕒 HORARIO</h3>
+        <p>Martes a Domingo</p>
+        <p>2:00 PM – 10:00 PM</p>
+      </div>
+    
+      <div class="footer-redes">
+        <h3>🌐 SÍGUENOS</h3>
+        <div class="redes">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
           <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-        </div>
       </div>
-    
-      <div class="footer-copy">
-        <p>© 2025 Steak Kitchen. Todos los derechos reservados.</p>
-      </div>
-    </footer>
+    </div>
+  
+    <div class="footer-copy">
+      <p>© 2025 Steak Kitchen. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="../js/main.js"></script>
   <script src="../js/animaciones.js"></script>
 
   <!-- Script para enviar formulario a WhatsApp -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form");
-  const btn = form.querySelector('button[type="submit"]');
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
 
-  if (!form) {
-    console.error("No se encontró el formulario #contact-form");
-    return;
-  }
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+      const nombre = form.nombre.value.trim();
+      const email = form.email.value.trim();
+      const mensaje = form.mensaje.value.trim();
 
-    // Leer valores
-    const nombre = (document.getElementById("nombre")?.value || "").trim();
-    const email  = (document.getElementById("email")?.value || "").trim();
-    const mensaje = (document.getElementById("mensaje")?.value || "").trim();
+      console.log("DEBUG contacto ->", { nombre, email, mensaje });
 
-    console.log("DEBUG contacto ->", { nombre, email, mensaje });
-
-    // Validación simple
-    if (!nombre || !email || !mensaje) {
-      alert("Por favor, completa todos los campos antes de enviar.");
-      return;
-    }
-
-    // Número de WhatsApp (usa formato internacional sin "+" ni espacios)
-    // Ejemplo para México: "52" + "4423813649" => "524423813649"
-    // Si usas un número móvil que requiere el "1" (celulares), inclúyelo: "521XXXXXXXXXX"
-    const numeroWhats = "5217541123577"; // <- ajusta aquí si es necesario
-
-    // Construir texto (codificado)
-    const texto = `Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`;
-    const textoCodificado = encodeURIComponent(texto);
-
-    // Construir URL (usar api.whatsapp.com funciona bien también)
-    const url = `https://wa.me/${numeroWhats}?text=${textoCodificado}`;
-    console.log("DEBUG URL WhatsApp:", url);
-
-    // UX: cambiar texto del botón momentáneamente
-    const originalBtnText = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviando...';
-    console.log(encodeURIComponent(`Hola, soy ${document.getElementById('nombre').value}. Mi correo es ${document.getElementById('email').value}.\n\n${document.getElementById('mensaje').value}`));
-
-
-    // Intentar abrir en nueva pestaña. Si el navegador bloquea popup, redirigimos en la misma pestaña.
-    const newWindow = window.open(url, "_blank");
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.innerHTML = originalBtnText;
-      // Si la ventana no se abrió (pop-up bloqueado), redirigimos en la misma pestaña
-      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        const confirmRedirect = confirm("No se pudo abrir WhatsApp en una nueva pestaña. ¿Quieres abrirlo en esta ventana?");
-        if (confirmRedirect) {
-          window.location.href = url;
-        }
+      if (!nombre || !email || !mensaje) {
+        alert("Por favor, completa todos los campos antes de enviar.");
+        return;
       }
-    }, 800);
-  });
-});
-</script>
 
+      const numeroWhats = "5217541123577"; // ✅ Ajusta este número
+
+      const texto = `Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`;
+      const textoCodificado = encodeURIComponent(texto);
+      const url = `https://wa.me/${numeroWhats}?text=${textoCodificado}`;
+
+      const btn = form.querySelector("button[type='submit']");
+      const originalBtnText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviando...';
+
+      const newWindow = window.open(url, "_blank");
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalBtnText;
+        if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+          const confirmRedirect = confirm("No se pudo abrir WhatsApp en una nueva pestaña. ¿Quieres abrirlo en esta ventana?");
+          if (confirmRedirect) window.location.href = url;
+        }
+      }, 800);
+    });
+  });
+  </script>
 </body>
 </html>
