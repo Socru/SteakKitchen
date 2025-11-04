@@ -104,51 +104,65 @@
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+  // <script src="../js/main.js"></script>
   <script src="../js/animaciones.js"></script>
 
   <!-- Script para enviar formulario a WhatsApp -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contact-form");
-    if (!form) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  if (!form) {
+    console.warn("No existe #contact-form en esta página.");
+    return;
+  }
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
+  const nombreEl = document.getElementById("nombre");
+  const emailEl  = document.getElementById("email");
+  const mensajeEl = document.getElementById("mensaje");
+  console.log("Refs ->", { nombreEl, emailEl, mensajeEl });
 
-      const nombre = form.nombre.value.trim();
-      const email = form.email.value.trim();
-      const mensaje = form.mensaje.value.trim();
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      console.log("DEBUG contacto ->", { nombre, email, mensaje });
+    // Si alguna referencia está undefined, avisamos
+    if (!nombreEl || !emailEl || !mensajeEl) {
+      alert("Error interno: campos del formulario no detectados. Revisa la consola.");
+      console.error("Campos no detectados:", { nombreEl, emailEl, mensajeEl });
+      return;
+    }
 
-      if (!nombre || !email || !mensaje) {
-        alert("Por favor, completa todos los campos antes de enviar.");
-        return;
+    // Leemos valores directamente desde los elementos
+    const nombre = (nombreEl.value || "").trim();
+    const email  = (emailEl.value || "").trim();
+    const mensaje = (mensajeEl.value || "").trim();
+
+    console.log("DEBUG contacto ->", { nombre, email, mensaje });
+
+    if (!nombre || !email || !mensaje) {
+      alert("Por favor, completa todos los campos antes de enviar.");
+      return;
+    }
+
+    const numeroWhats = "524423813649"; // <--- ajusta aquí al número definitivo (ejemplo: +52 442 381 3649 -> 524423813649)
+
+    const texto = encodeURIComponent(`Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`);
+    const url = `https://wa.me/${numeroWhats}?text=${texto}`;
+
+    const btn = form.querySelector("button[type='submit']");
+    const originalBtnText = btn ? btn.innerHTML : "Enviando...";
+    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviando...'; }
+
+    const newWindow = window.open(url, "_blank");
+    setTimeout(() => {
+      if (btn) { btn.disabled = false; btn.innerHTML = originalBtnText; }
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+        const r = confirm("No se pudo abrir WhatsApp en una nueva pestaña. ¿Quieres abrirlo en esta ventana?");
+        if (r) window.location.href = url;
       }
-
-      const numeroWhats = "5217541123577"; // ✅ Ajusta este número
-
-      const texto = `Hola, soy ${nombre}. Mi correo es ${email}.\n\n${mensaje}`;
-      const textoCodificado = encodeURIComponent(texto);
-      const url = `https://wa.me/${numeroWhats}?text=${textoCodificado}`;
-
-      const btn = form.querySelector("button[type='submit']");
-      const originalBtnText = btn.innerHTML;
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviando...';
-
-      const newWindow = window.open(url, "_blank");
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = originalBtnText;
-        if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
-          const confirmRedirect = confirm("No se pudo abrir WhatsApp en una nueva pestaña. ¿Quieres abrirlo en esta ventana?");
-          if (confirmRedirect) window.location.href = url;
-        }
-      }, 800);
-    });
+    }, 700);
   });
-  </script>
+});
+</script>
+
 </body>
 </html>
