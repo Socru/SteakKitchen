@@ -450,6 +450,73 @@ main, section, .hero, .nosotros, .servicios, .galeria, .contacto {
   box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 }
 
+/* =================== BOTONES =================== */
+.galeria-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f5b041;
+  border: 2px solid #f5b041;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.8rem 1.2rem;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Efecto hover */
+.galeria-btn:hover {
+  background-color: #f5b041;
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(245, 176, 65, 0.6);
+}
+
+/* Efecto clic */
+.galeria-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Posiciones */
+.galeria-btn.prev {
+  left: 15px;
+}
+
+.galeria-btn.next {
+  right: 15px;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .galeria-slideshow {
+    height: 380px;
+  }
+
+  .galeria-btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .galeria-slideshow {
+    height: 300px;
+  }
+
+  .galeria-btn {
+    font-size: 1.3rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+
+
 /* Responsive */
 @media (max-width: 900px) {
   .galeria h2 {
