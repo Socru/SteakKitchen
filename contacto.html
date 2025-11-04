@@ -151,6 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const originalBtnText = btn.innerHTML;
     btn.disabled = true;
     btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviando...';
+    console.log(encodeURIComponent(`Hola, soy ${document.getElementById('nombre').value}. Mi correo es ${document.getElementById('email').value}.\n\n${document.getElementById('mensaje').value}`));
+
 
     // Intentar abrir en nueva pestaña. Si el navegador bloquea popup, redirigimos en la misma pestaña.
     const newWindow = window.open(url, "_blank");
