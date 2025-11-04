@@ -1,3 +1,17 @@
+/* =================== RESET GENERAL =================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  color: #333;
+  background-color: #fff;
+}
+
+
 .carrusel {
   position: relative;
   overflow: hidden;
@@ -31,32 +45,64 @@
   transform: translate(-50%, -50%) scale(1.02); /* Ligeramente más grande para énfasis */
 }
 
+
+
+/* =================== BOTONES DEL CARRUSEL =================== */
 .carrusel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  border: none;
-  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #f5b041;
+  border: 2px solid #f5b041;
+  font-size: 1.8rem;
   cursor: pointer;
-  padding: 0.6rem 1rem;
+  padding: 0.8rem 1rem;
   border-radius: 50%;
   z-index: 2;
   transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Hover con efecto de brillo */
 .carrusel-btn:hover {
-  background-color: rgba(0, 0, 0, 0.75);
-  transform: translateY(-50%) scale(1.15);
+  background: #f5b041;
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 15px rgba(245, 176, 65, 0.6);
 }
 
+/* Botón anterior (izquierda) */
 .carrusel-btn.prev {
   left: 1rem;
 }
 
+/* Botón siguiente (derecha) */
 .carrusel-btn.next {
   right: 1rem;
+}
+
+/* Efecto de clic */
+.carrusel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .carrusel-btn {
+    font-size: 1.5rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carrusel-btn {
+    font-size: 1.2rem;
+    padding: 0.5rem 0.7rem;
+  }
 }
 
 
@@ -95,3 +141,395 @@
   }
 }
 
+/* =================== BOTÓN AGREGAR PLATILLO =================== */
+#btn-agregar-platillo {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #4CAF50; /* verde */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#btn-agregar-platillo:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* =================== BOTONES DE EDICIÓN Y ELIMINAR =================== */
+.admin-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-bar button {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Botón editar */
+.admin-bar .btn-edit,
+.acciones .btn-editar {
+  background-color: #2196F3; /* azul */
+  color: white;
+}
+
+.admin-bar .btn-edit:hover,
+.acciones .btn-editar:hover {
+  background-color: #1976D2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Botón eliminar */
+.admin-bar .btn-delete,
+.acciones .btn-eliminar {
+  background-color: #f44336; /* rojo */
+  color: white;
+}
+
+.admin-bar .btn-delete:hover,
+.acciones .btn-eliminar:hover {
+  background-color: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* =================== BOTÓN AGREGAR PLATILLO =================== */
+#btn-agregar-platillo {
+  display: block; /* centrado */
+  margin: 30px auto; /* centrado horizontalmente */
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f5b041; /* color de acento */
+  color: #000; /* negro */
+  border: 2px solid #000;
+  border-radius: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+#btn-agregar-platillo:hover {
+  background-color: #000;
+  color: #f5b041;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* =================== BOTONES DE EDICIÓN Y ELIMINAR =================== */
+.admin-bar {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.servicio-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.servicio-card:hover .admin-bar {
+  opacity: 1;
+}
+
+.admin-bar button {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Botón editar */
+.admin-bar .btn-edit,
+.acciones .btn-editar {
+  background-color: #f5b041; /* color acento */
+  color: #000;
+}
+
+.admin-bar .btn-edit:hover,
+.acciones .btn-editar:hover {
+  background-color: #000;
+  color: #f5b041;
+  transform: translateY(-2px);
+}
+
+/* Botón eliminar */
+.admin-bar .btn-delete,
+.acciones .btn-eliminar {
+  background-color: #000; /* negro */
+  color: #f5b041; /* color acento */
+}
+
+.admin-bar .btn-delete:hover,
+.acciones .btn-eliminar:hover {
+  background-color: #f5b041;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+  #btn-agregar-platillo {
+    width: 90%;
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .admin-bar {
+    flex-direction: column;
+    gap: 5px;
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+    opacity: 1;
+  }
+
+  .admin-bar button {
+    width: 100%;
+  }
+}
+
+
+/* =================== MODALES =================== */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8); /* fondo oscuro semi transparente */
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fff;
+  color: #000;
+  margin: auto;
+  padding: 30px 40px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+/* Animación de entrada */
+@keyframes modalFadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Cerrar modal (ícono “X”) */
+.modal .close,
+.modal .close-add {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 26px;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.modal .close:hover,
+.modal .close-add:hover {
+  color: #f5b041;
+  transform: scale(1.2);
+}
+
+/* Título */
+.modal-content h2 {
+  text-align: center;
+  color: #0a0600;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Inputs y textarea */
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  border-color: #f5b041;
+  outline: none;
+  box-shadow: 0 0 6px rgba(245,176,65,0.5);
+}
+
+/* Botón principal */
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: #f5b041;
+  border: 2px solid #f5b041;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #f5b041;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+}
+
+/* =================== SECCIÓN RESEÑAS =================== */
+.resenas-section {
+  text-align: center;
+  padding: 90px 20px;
+  background: #fff; /* Fondo limpio y moderno */
+  color: #222;
+  border-top: 3px solid #f5b041;
+  border-bottom: 3px solid #f5b041;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Degradado decorativo superior sutil */
+.resenas-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #000, #f5b041, #000);
+  opacity: 0.15;
+}
+
+/* Degradado decorativo inferior sutil */
+.resenas-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #000, #f5b041, #000);
+  opacity: 0.15;
+}
+
+/* Título principal */
+.resenas-section h2 {
+  font-size: 2.3rem;
+  margin-bottom: 25px;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #000;
+  position: relative;
+  display: inline-block;
+  font-style: oblique;
+}
+
+
+/* Línea decorativa dorada animada */
+.resenas-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4px;
+  background-color: #f5b041;
+  border-radius: 3px;
+  animation: shimmer 3s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0%, 100% { width: 80px; opacity: 0.7; }
+  50% { width: 120px; opacity: 1; }
+}
+
+/* Contenedor del widget Elfsight */
+.elfsight-app-ec3674a9-0fa7-4f4a-9a8c-df542e4a9f8c {
+  max-width: 950px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 2px solid rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.elfsight-app-ec3674a9-0fa7-4f4a-9a8c-df542e4a9f8c:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+/* =================== RESPONSIVE =================== */
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 25px 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .modal .close,
+  .modal .close-add {
+    font-size: 22px;
+  }
+
+    .resenas-section {
+    padding: 60px 15px;
+  }
+
+  .resenas-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .elfsight-app-ec3674a9-0fa7-4f4a-9a8c-df542e4a9f8c {
+    padding: 20px;
+  }
+}
