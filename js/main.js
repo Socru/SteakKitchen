@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // limpieza al salir de la página
   window.addEventListener("beforeunload", stopSlideshow);
-
+});
 // ==== Abrir/Cerrar modal ====
 const modal = document.getElementById("login-modal");
 const btnLogin = document.getElementById("btn-login");
