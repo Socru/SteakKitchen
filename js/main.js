@@ -145,36 +145,64 @@ menuToggle.addEventListener('click', () => {
 
 
 //galeria
+document.addEventListener("DOMContentLoaded", () => {
+  const images = Array.from(document.querySelectorAll(".galeria-slideshow img"));
+  if (!images || images.length === 0) {
+    console.warn("Galería: no se encontraron imágenes (.galeria-slideshow img).");
+    return;
+  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".galeria-slideshow img");
-    let index = 0;
-    let interval;
-  
-    function showNextImage() {
-      images[index].classList.remove("active");
-      index = (index + 1) % images.length;
-      images[index].classList.add("active");
+  // Índice inicial: si alguna imagen ya tiene .active, respetarla; si no, usar 0
+  let index = images.findIndex(img => img.classList.contains("active"));
+  if (index === -1) {
+    index = 0;
+    images.forEach((img, i) => img.classList.toggle("active", i === 0));
+  }
+
+  let intervalId = null;
+  const delayMs = 2000; // <-- 2 segundos
+
+  function showNextImage() {
+    // seguridad: si no hay imágenes, detener
+    if (!images.length) return;
+    images[index].classList.remove("active");
+    index = (index + 1) % images.length;
+    images[index].classList.add("active");
+  }
+
+  function startSlideshow() {
+    stopSlideshow(); // evita duplicar intervalos
+    intervalId = setInterval(showNextImage, delayMs);
+  }
+
+  function stopSlideshow() {
+    if (intervalId !== null) {
+      clearInterval(intervalId);
+      intervalId = null;
     }
-  
-    // Cambio automático cada 2.5 segundos
-    function startSlideshow() {
-      interval = setInterval(showNextImage, 2500);
-    }
-  
-    function stopSlideshow() {
-      clearInterval(interval);
-    }
-  
-    // Inicia el carrusel automáticamente
-    startSlideshow();
-  
-    // Pausa cuando el usuario pasa el mouse
-    const container = document.querySelector(".galeria-slideshow");
+  }
+
+  // empezar automáticamente
+  startSlideshow();
+
+  // pausas al pasar el mouse sobre el contenedor
+  const container = document.querySelector(".galeria-slideshow");
+  if (container) {
     container.addEventListener("mouseenter", stopSlideshow);
     container.addEventListener("mouseleave", startSlideshow);
-  });
 
+    // Pausa en touch (móviles) y reanuda tras touchend
+    container.addEventListener("touchstart", stopSlideshow, { passive: true });
+    container.addEventListener("touchend", () => {
+      // un ligero retraso para que no arranque inmediatamente al soltar
+      setTimeout(startSlideshow, 400);
+    }, { passive: true });
+  } else {
+    console.warn("Galería: no se encontró el contenedor .galeria-slideshow para los eventos de pausa.");
+  }
+
+  // limpieza al salir de la página
+  window.addEventListener("beforeunload", stopSlideshow);
 
 // ==== Abrir/Cerrar modal ====
 const modal = document.getElementById("login-modal");
