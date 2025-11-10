@@ -207,23 +207,7 @@
 
   <!-- ========== JS CARRUSEL ========== -->
 
-  
 
-  <script>
-  function cambiarSlide(id, dir) {
-    const carrusel = document.getElementById(id);
-    const slides = carrusel.querySelectorAll('.slides img');
-    let index = Array.from(slides).findIndex(img => img.classList.contains('active'));
-    slides[index].classList.remove('active');
-    index = (index + dir + slides.length) % slides.length;
-    slides[index].classList.add('active');
-  }
-
-  // Cambio automático cada 4 segundos por carrusel
-  setInterval(() => cambiarSlide('carrusel1', 1), 4000);
-  setInterval(() => cambiarSlide('carrusel2', 1), 5000);
-  setInterval(() => cambiarSlide('carrusel3', 1), 6000);
-</script>
 
 
 </body>
