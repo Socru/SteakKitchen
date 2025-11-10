@@ -823,4 +823,112 @@ body {
 }
 
 
+/* === SECCIÓN DE ACCIONES DE CONTACTO === */
+.contacto-acciones {
+  text-align: center;
+  margin-top: 3rem;
+  background: #292929;
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
 
+.contacto-acciones h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+  color: #e0b973;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.acciones-botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.btn-accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #e0b973;
+  color: #1a1a1a;
+  padding: 0.9rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-accion:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+
+.btn-accion i {
+  font-size: 1.2rem;
+}
+
+.btn-accion.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.btn-accion.whatsapp:hover {
+  background: #1ebf58;
+}
+
+/* === ICONOS GRANDES DE REDES === */
+.redes-contacto {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.red-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2e2e2e;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+
+.red-icon:hover {
+  transform: scale(1.1);
+}
+
+.red-icon.facebook:hover {
+  background: #1877F2;
+}
+
+.red-icon.instagram:hover {
+  background: radial-gradient(circle at 30% 30%, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.red-icon.tiktok:hover {
+  background: linear-gradient(135deg, #69C9D0, #EE1D52);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .btn-accion {
+    font-size: 0.95rem;
+    padding: 0.8rem 1.3rem;
+  }
+
+  .red-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+}
