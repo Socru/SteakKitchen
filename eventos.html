@@ -206,20 +206,7 @@
   </footer>
 
   <!-- ========== JS CARRUSEL ========== -->
-  <script>
-    const slides = document.querySelectorAll('.galeria-slideshow img');
-    const prevBtn = document.querySelector('.galeria-btn.prev');
-    const nextBtn = document.querySelector('.galeria-btn.next');
-    let current = 0;
 
-    const showSlide = i => slides.forEach((img, idx) => img.classList.toggle('active', idx === i));
-    const nextSlide = () => { current = (current + 1) % slides.length; showSlide(current); };
-    const prevSlide = () => { current = (current - 1 + slides.length) % slides.length; showSlide(current); };
-
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-    setInterval(nextSlide, 4000);
-  </script>
   
 
   <script>
